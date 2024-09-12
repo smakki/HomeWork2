@@ -103,7 +103,7 @@ namespace HomeWork2
                 y++;
                 xPoint1++;xPoint2--;
             }
-            while (y< width-1); 
+            while (y< width-1);
         }
     }
 }
