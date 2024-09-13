@@ -1,49 +1,46 @@
 ﻿using System;
-using System.Linq.Expressions;
 
 namespace HomeWork2
 {
     internal class Program
     {
         static readonly int Height = 7;
-        static readonly char symbol = '+';
-        static int width{ get;set; }
-        static string separator { get; set; }
-        static string text { get; set; }
+        static readonly char sym = '+';
+        static int Width{ get;set; }
+        static string Text { get; set; }
 
         static void Main(string[] args)
         {
             Console.WriteLine("Введите тольщину рамки число от 1 до 6");
             int border = int.Parse(Console.ReadLine());
             Console.WriteLine("Введите выводимый текст");
-            text = Console.ReadLine();
+            Text = Console.ReadLine();
 
-            WriteTable(border, text);
+            WriteTable(border, Text);
 
         }
-
 
         public static void WriteTable(int n, string s)
         {
             if (n <1 || n > 6) { Console.WriteLine("Число должно быть от 1 до 6"); return; }
             if (s.Length < 1) { Console.WriteLine("Нужно ввести строку"); return; }
-            width = Math.Min( s.Length + n*2,40);
-            string separator = new String(symbol, width);
+            Width = Math.Min( s.Length + n*2,40);
+            string separator = new String(sym, Width);
             for (int i = 0; i < 3; i++)
             {
                 switch (i)
                 {
                     case 0:
                         Console.WriteLine(separator);
-                        function1();
+                        PrintTable1();
                         break;
                     case 1:
                         Console.WriteLine(separator);
-                        function2();
+                        PrintTable2();
                         break;
                     case 2:
                         Console.WriteLine(separator);
-                        function3();
+                        PrintTable3();
                         Console.WriteLine(separator);
                         break;
                 }
@@ -51,10 +48,10 @@ namespace HomeWork2
         Console.ReadKey();
         }
 
-        public static void function1()
+        public static void PrintTable1()
         {
-            string emptyString = new String(' ', width - 2).PadLeft(width-1,symbol).PadRight(width,symbol);
-            string stringWithText = symbol + new String(' ', (width - text.Length)/2-1) + text + new String(' ', (width - text.Length) / 2 - 1) + symbol;
+            string emptyString = new String(' ', Width - 2).PadLeft(Width-1,sym).PadRight(Width,sym);
+            string stringWithText = sym + new String(' ', (Width - Text.Length)/2-1) + Text + new String(' ', (Width - Text.Length) / 2 - 1) + sym;
             for (int i = 0; i < Height; i++)
             {
                 if (i != (Height - 1) / 2)
@@ -68,16 +65,16 @@ namespace HomeWork2
             }
         }
 
-        public static void function2()
+        public static void PrintTable2()
         {
             int y = 1;
             
             while (y < Height+1)
             {
                 int x = 1;
-                while (x < width+1)
+                while (x < Width+1)
                 {
-                    Console.Write(x==1||x==width||x%2==y%2?symbol:' ');
+                    Console.Write(x==1||x==Width||x%2==y%2?sym:' ');
                     x++;
                 }
                 
@@ -86,24 +83,24 @@ namespace HomeWork2
             }
         }
 
-        public static void function3()
+        public static void PrintTable3()
         {
-            int xPoint1 = 2; int xPoint2=width-1;
+            int xPoint1 = 2; int xPoint2=Width-1;
             int y = 1;
             do
             {
                 int x = 1;
                 do
                 {
-                    Console.Write(x == xPoint1 || x == xPoint2 || x ==1 || x == width ? symbol : ' ');
+                    Console.Write(x == xPoint1 || x == xPoint2 || x ==1 || x == Width ? sym : ' ');
                     x++;
                 }
-                while (x < width + 1);
+                while (x < Width + 1);
                 Console.WriteLine();
                 y++;
                 xPoint1++;xPoint2--;
             }
-            while (y< width-1);
+            while (y< Width-1);
         }
     }
 }
